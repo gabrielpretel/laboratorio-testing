@@ -25,13 +25,13 @@ const gameOver = (): void => {
     botonRestart instanceof HTMLButtonElement
   ) {
     if (puntuacionUsuario > 7.5) {
-      elementoInformacion.innerHTML = `GAME OVER. Te has pasado!`;
+      elementoInformacion.innerHTML = `<div class="gameover">GAME OVER</div><br> Te has pasado!`;
       botonDameCarta.hidden = true;
       botonMePlanto.hidden = true;
       botonRestart.hidden = false;
     }
     if (puntuacionUsuario === 7.5) {
-      elementoInformacion.innerHTML = `¡Lo has clavado! ¡Enhorabuena!`;
+      elementoInformacion.innerHTML = `<div class="win">HAS GANADO</div><br>¡Lo has clavado! ¡Enhorabuena!`;
       botonDameCarta.hidden = true;
       botonMePlanto.hidden = true;
       botonRestart.hidden = false;
