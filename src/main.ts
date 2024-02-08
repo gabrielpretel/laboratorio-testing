@@ -24,81 +24,71 @@ const gameOver = (): void => {
     botonMePlanto instanceof HTMLButtonElement &&
     botonRestart instanceof HTMLButtonElement
   ) {
-    if (puntuacionUsuario > 7.5) {
-      elementoInformacion.innerHTML = `<div class="gameover">GAME OVER</div><br> Te has pasado!`;
-      botonDameCarta.hidden = true;
-      botonMePlanto.hidden = true;
-      botonRestart.hidden = false;
-    }
-    if (puntuacionUsuario === 7.5) {
-      elementoInformacion.innerHTML = `<div class="win">HAS GANADO</div><br>¡Lo has clavado! ¡Enhorabuena!`;
-      botonDameCarta.hidden = true;
-      botonMePlanto.hidden = true;
-      botonRestart.hidden = false;
-    }
+    elementoInformacion.innerHTML = `<div class="gameover">GAME OVER</div><br> Te has pasado!`;
+    botonDameCarta.hidden = true;
+    botonMePlanto.hidden = true;
+    botonRestart.hidden = false;
+  }
+};
+
+const partidaGanada = (): void => {
+  if (
+    botonDameCarta &&
+    botonMePlanto &&
+    botonRestart &&
+    elementoInformacion &&
+    botonDameCarta instanceof HTMLButtonElement &&
+    botonMePlanto instanceof HTMLButtonElement &&
+    botonRestart instanceof HTMLButtonElement
+  ) {
+    elementoInformacion.innerHTML = `<div class="win">HAS GANADO</div><br>¡Lo has clavado! ¡Enhorabuena!`;
+    botonDameCarta.hidden = true;
+    botonMePlanto.hidden = true;
+    botonRestart.hidden = false;
+  }
+};
+
+const compruebaPartida = (): void => {
+  if (puntuacionUsuario > 7.5) {
+    gameOver();
+  }
+  if (puntuacionUsuario === 7.5) {
+    partidaGanada();
   }
 };
 
 document.addEventListener("DOMContentLoaded", muestraPuntuacion);
 
-const mostrarCarta = (carta: number): void => {
+const pintaURL = (urlCarta: string) => {
   if (imagenCarta && imagenCarta instanceof HTMLImageElement) {
-    switch (carta) {
-      case 1:
-        imagenCarta.src =
-          "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/1_as-copas.jpg";
-        puntuacionUsuario = puntuacionUsuario + 1;
-        break;
-      case 2:
-        imagenCarta.src =
-          "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/2_dos-copas.jpg";
-        puntuacionUsuario = puntuacionUsuario + 2;
-        break;
-      case 3:
-        imagenCarta.src =
-          "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/3_tres-copas.jpg";
-        puntuacionUsuario = puntuacionUsuario + 3;
-        break;
-      case 4:
-        imagenCarta.src =
-          "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/4_cuatro-copas.jpg";
-        puntuacionUsuario = puntuacionUsuario + 4;
-        break;
-      case 5:
-        imagenCarta.src =
-          "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/5_cinco-copas.jpg";
-        puntuacionUsuario = puntuacionUsuario + 5;
-        break;
-      case 6:
-        imagenCarta.src =
-          "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/6_seis-copas.jpg";
-        puntuacionUsuario = puntuacionUsuario + 6;
-        break;
-      case 7:
-        imagenCarta.src =
-          "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/7_siete-copas.jpg";
-        puntuacionUsuario = puntuacionUsuario + 7;
-        break;
-      case 10:
-        imagenCarta.src =
-          "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/10_sota-copas.jpg";
-        puntuacionUsuario = puntuacionUsuario + 0.5;
-        break;
-      case 11:
-        imagenCarta.src =
-          "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/11_caballo-copas.jpg";
-        puntuacionUsuario = puntuacionUsuario + 0.5;
-        break;
-      case 12:
-        imagenCarta.src =
-          "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/12_rey-copas.jpg";
-        puntuacionUsuario = puntuacionUsuario + 0.5;
-        break;
+    imagenCarta.src = urlCarta;
+  }
+};
 
-      default:
-        imagenCarta.src =
-          "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/back.jpg";
-    }
+const obtenerUrlCarta = (carta: number): string => {
+  switch (carta) {
+    case 1:
+      return "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/1_as-copas.jpg";
+    case 2:
+      return "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/2_dos-copas.jpg";
+    case 3:
+      return "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/3_tres-copas.jpg";
+    case 4:
+      return "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/4_cuatro-copas.jpg";
+    case 5:
+      return "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/5_cinco-copas.jpg";
+    case 6:
+      return "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/6_seis-copas.jpg";
+    case 7:
+      return "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/7_siete-copas.jpg";
+    case 10:
+      return "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/10_sota-copas.jpg";
+    case 11:
+      return "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/11_caballo-copas.jpg";
+    case 12:
+      return "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/12_rey-copas.jpg";
+    default:
+      return "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/back.jpg";
   }
 };
 
@@ -127,12 +117,36 @@ const mePlanto = () => {
   }
 };
 
+const obtenerNumeroAleatorio = (): number => {
+  return Math.floor(Math.random() * 10) + 1;
+};
+
+const obtenerCarta = (numeroAleatorio: number): number => {
+  return numeroAleatorio > 7 ? numeroAleatorio + 2 : numeroAleatorio;
+};
+
+const obtenerPuntuacionCarta = (carta: number): number => {
+  return carta < 7 ? carta : 0.5;
+};
+
+const sumaPuntuacion = (puntos: number): number => {
+  return puntuacionUsuario + puntos;
+};
+
+const setPuntuacionUsuario = (nuevoPunto: number): void => {
+  puntuacionUsuario = nuevoPunto;
+};
+
 const dameCarta = (): void => {
-  const numeroAleatorio = Math.floor(Math.random() * 10) + 1;
-  const carta = numeroAleatorio > 7 ? numeroAleatorio + 2 : numeroAleatorio;
-  mostrarCarta(carta);
+  const numeroAleatorio = obtenerNumeroAleatorio();
+  const carta = obtenerCarta(numeroAleatorio);
+  const urlCarta = obtenerUrlCarta(carta);
+  pintaURL(urlCarta);
+  const puntos = obtenerPuntuacionCarta(carta);
+  const nuevoPunto = sumaPuntuacion(puntos);
+  setPuntuacionUsuario(nuevoPunto);
   muestraPuntuacion();
-  gameOver();
+  compruebaPartida();
 };
 
 const reset = () => {
