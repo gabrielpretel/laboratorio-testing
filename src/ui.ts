@@ -25,7 +25,7 @@ export const muestraPuntuacion = (): void => {
   }
 };
 
-export const mePlanto = () => {
+export const mePlanto = (): void => {
   if (
     elementoInformacion &&
     botonDameCarta &&
@@ -77,13 +77,13 @@ export const obtenerUrlCarta = (carta: number): string => {
   }
 };
 
-export const pintaURL = (urlCarta: string) => {
+export const pintaURL = (urlCarta: string): void => {
   if (imagenCarta && imagenCarta instanceof HTMLImageElement) {
     imagenCarta.src = urlCarta;
   }
 };
 
-const pintaGameOver = () => {
+const pintaGameOver = (): void => {
   if (
     botonDameCarta &&
     botonMePlanto &&
@@ -128,7 +128,7 @@ const compruebaPartida = (partida: Partida): void => {
   }
 };
 
-export const iniciaPartidaUi = () => {
+export const iniciaPartidaUi = (): void => {
   iniciaPartidaMotor();
   muestraPuntuacion();
   if (
