@@ -36,4 +36,6 @@ export const compruebaPartidaGanada = (partida: Partida): boolean => {
 
 export const iniciaPartidaMotor = (): void => {
   partida.puntuacionUsuario = 0;
+  partida.partidaGanada = false;
+  partida.partidaPerdida = false;
 };
