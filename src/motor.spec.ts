@@ -104,7 +104,7 @@ describe("obtenerNumeroAleatorio", () => {
 });
 
 describe("obtenerCarta", () => {
-  it("Debería devolver el numero aleatorio sin sumarle 2 cuando el numero es inferior o igual a 7", () => {
+  it("Debería devolver el numero aleatorio sin sumarle 2 cuando el numero es menor o igual a 7", () => {
     //Arrange
     const numeroAleatorio: number = 7;
 
@@ -114,7 +114,7 @@ describe("obtenerCarta", () => {
     //Assert
     expect(resultado).toBe(7);
   });
-  it("Debería devolver el numero aleatorio sumandole 2 cuando el numero es superior a 7", () => {
+  it("Debería devolver el numero aleatorio sumandole 2 cuando el numero es mayor a 7", () => {
     //Arrange
     const numeroAleatorio: number = 8;
 
@@ -126,10 +126,10 @@ describe("obtenerCarta", () => {
   });
 });
 
-// Comprobación de que al obtener una carta, devuelve el valor de esa carta
+// Comprobación de que al obtener una carta, devuelve el valor de esa carta si es menor o igual a 7 o 0.5 si es mayor.
 
 describe("obtenerPuntuacionCarta", () => {
-  it("Debería un valor igual al numero de la carta si es inferior o igual a 7", () => {
+  it("Debería un valor igual al numero de la carta si es menor o igual a 7", () => {
     //Arrange
     const numeroCarta: number = 7;
     const resultadoEsperado: number = 7;
@@ -140,7 +140,7 @@ describe("obtenerPuntuacionCarta", () => {
     //Assert
     expect(resultado).toBe(resultadoEsperado);
   });
-  it("Debería 0.5 si es superior a 7", () => {
+  it("Debería 0.5 si es mayor a 7", () => {
     //Arrange
     const numeroCarta: number = 8;
     const resultadoEsperado: number = 0.5;
