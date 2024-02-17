@@ -9,7 +9,7 @@ export const obtenerCarta = (numeroAleatorio: number): number => {
 };
 
 export const obtenerPuntuacionCarta = (carta: number): number => {
-  return carta < 7 ? carta : 0.5;
+  return carta <= 7 ? carta : 0.5;
 };
 
 export const sumaPuntuacion = (puntos: number): number => {
